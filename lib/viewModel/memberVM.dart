@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import '../model/Album.dart';
 import '../repository/Repository.dart';
 
-class HomeVM extends ValueNotifier<List<Album>?> {
+class MemberVM extends ChangeNotifier {
+
+  List<Album>? album;
 
   Repository repository = Repository();
 
   bool _dispose = false;
-
-  HomeVM(super.value);
 
   @override
   void dispose() {
@@ -25,9 +25,10 @@ class HomeVM extends ValueNotifier<List<Album>?> {
 
   void getData() {
     repository.fetchAlbum().then((album) {
-      value = album;
+      this.album = album;
+      notifyListeners();
  }).catchError((e) {
-      value = null;
+      album = null;
       notifyListeners();
     });
   }

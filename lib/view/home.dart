@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../model/Album.dart';
-import '../viewModel/homeVM.dart';
+import '../viewModel/memberVM.dart';
+import 'member.dart';
+import 'news.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,19 +15,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  final HomeVM vm = HomeVM(null);
 
   var currentTab = [
     Member(),
-    Profile(),
-    Setting(),
-    Profile()
+    News(),
+    Member(),
+    News(),
   ];
 
   @override
   void initState() {
     super.initState();
-    vm.getData();
   }
 
   @override
@@ -131,114 +131,8 @@ class BottomNavigationBarProvider with ChangeNotifier {
   }
 }
 
-class Profile extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          alignment: Alignment.center,
-          height: 300,
-          width: 300,
-          child: Text(
-            "Profile",
-            style: TextStyle(color: Colors.white, fontSize: 30),
-          ),
-          color: Colors.blue,
-        ),
-      ),
-    );
-  }
-}
 
-class Setting extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Container(
-            alignment: Alignment.center,
-            height: 300,
-            width: 300,
-            child: Text(
-              "Settings",
-              style: TextStyle(color: Colors.white, fontSize: 30),
-            ),
-            color: Colors.cyan,
-          )),
-    );
-  }
-}
 
-class Member extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: ListView.builder(
-          itemBuilder: (context, position) {
-    return Column(
-    children: <Widget>[
-    Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-    Expanded(child:  Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-    Padding(
-    padding:
-    const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
-    child: Text(
-    "123",
-    overflow: TextOverflow.ellipsis,
-    style: TextStyle(
-    fontSize: 22.0, fontWeight: FontWeight.bold),
-    )
-    ),
-    Padding(
-    padding:
-    const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
-    child: Text(
-    "321",
-    style: TextStyle(fontSize: 18.0),
-    ),
-    ),
-    ],
-    ),
-    ),
-    Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: <Widget>[
-    Text(
-    "5m",
-    style: TextStyle(color: Colors.grey),
-    ),
-    Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Icon(
-    Icons.star_border,
-    size: 35.0,
-    color: Colors.grey,
-    ),
-    ),
-    ],
-    ),
-    ),
-    ],
-    ),
-    Divider(
-    height: 2.0,
-    color: Colors.grey,
-    )
-    ],
-    );
-    },
-      itemCount: 20,
-    )
-      ),
-    );
-  }
-}
+
+
 
