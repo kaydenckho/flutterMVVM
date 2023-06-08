@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../model/Album.dart';
-import '../repository/Repository.dart';
+
+import '../../model/Album.dart';
+import '../../repository/Repository.dart';
 
 class MemberVM extends ChangeNotifier {
-
   List<Album>? album;
 
   Repository repository = Repository();
@@ -27,7 +27,7 @@ class MemberVM extends ChangeNotifier {
     repository.fetchAlbum().then((album) {
       this.album = album;
       notifyListeners();
- }).catchError((e) {
+    }).catchError((e) {
       album = null;
       notifyListeners();
     });

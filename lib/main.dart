@@ -6,12 +6,9 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefs().init();
-  runApp( MaterialApp(
-        home: ChangeNotifierProvider<BottomNavigationBarProvider>(
-            child: const Home(),
-            create: (_) => BottomNavigationBarProvider(),
-      )
-  ));
+  runApp(MaterialApp(
+      home: ChangeNotifierProvider<BottomNavigationBarProvider>(
+    child: const Home(),
+    create: (_) => BottomNavigationBarProvider(),
+  )));
 }
-
-
