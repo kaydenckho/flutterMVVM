@@ -72,7 +72,10 @@ class _HomeState extends State<Home> {
                 ), //IconB
               ],
             )),
-        body: currentTab[provider.currentIndex],
+        body: IndexedStack(
+          index: provider.currentIndex,
+          children: currentTab,
+        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: provider.currentIndex,
           backgroundColor: Colors.white,

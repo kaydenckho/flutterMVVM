@@ -1,9 +1,9 @@
 class Album {
-  final int userId;
-  final int id;
-  final String title;
+  int userId;
+  int id;
+  String title;
 
-  const Album({
+  Album({
     required this.userId,
     required this.id,
     required this.title,
